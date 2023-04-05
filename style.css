@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(./images/independenceday.jpg);
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    justify-content: space-around;
+}
+.choose-holiday {
+}
+.choose-holiday__select {
+}
+.header-holiday {
+    width: 80%;
+    text-align: center;
+    background: rgba(60, 218, 180, 0.44);
+    border-radius: 30px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 59px;
+    color: #ffffff;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.description-holiday {
+    width: 90%;
+    text-align: center;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #ffffff;
+    background: rgba(208, 41, 41, 0.47);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+}
+.timer-holiday {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    background: #48d026;
+    border-radius: 30px;
+    height: 200px;
+}
+.timer-holiday__days {
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.timer-holiday__values {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 117px;
+}
+.timer-holiday__units {
+    font-family: 'Montserrat';
+}
+.timer-holiday__hours {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    align-items: center;
+}
+.timer-holiday__minutes {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    align-items: center;
+}
+.timer-holiday__seconds {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    align-items: center;
+}
