@@ -26,8 +26,8 @@ let holidaysDB = [
         description:
             ' главный календарный праздник, наступающий в момент перехода с последнего дня текущего года в первый день следующего года.',
         year: 0,
-        month: 12,
-        day: 31,
+        month: 1,
+        day: 1,
         imgURL: '../images/newYear.jpg',
     },
     {
@@ -111,4 +111,4 @@ function fillHolidaysYears(holidaysDB) {
     return holidaysDB;
 }
 
-// fillHolidaysYears();
+fillHolidaysYears(holidaysDB);
