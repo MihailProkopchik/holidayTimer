@@ -86,3 +86,44 @@ body {
     width: 15%;
     align-items: center;
 }
+
+@media (min-width: 0px) and (max-width: 1600px) {
+    .timer-holiday__values {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 200;
+        font-size: 56px;
+        line-height: 87px;
+    }
+    .timer-holiday {
+        width: 70%;
+        display: flex;
+        justify-content: space-between;
+        background: #48d026;
+        border-radius: 30px;
+        height: 110px;
+    }
+}
+@media (min-width: 0px) and (max-width: 950px) {
+    .timer-holiday__values {
+        font-family: 'Montserrat';
+        font-style: normal;
+
+        font-size: 16px;
+        line-height: 17px;
+    }
+    .timer-holiday {
+        width: 70%;
+        display: flex;
+        justify-content: space-between;
+        background: #48d026;
+        border-radius: 30px;
+        height: 35px;
+    }
+}
+@media (min-width: 0px) and (max-width: 800px) {
+    .timer-holiday__units {
+        font-family: 'Montserrat';
+        font-size: 10px;
+    }
+}
