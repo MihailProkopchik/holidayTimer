@@ -98,6 +98,11 @@ body {
         border-radius: 30px;
         height: 110px;
     }
+    .header-holiday {
+        font-weight: 600;
+        font-size: 38px;
+        line-height: 49px;
+    }
 }
 @media (max-width: 950px) {
     .timer-holiday__values {
@@ -109,6 +114,16 @@ body {
         border-radius: 30px;
         height: 40px;
     }
+    .header-holiday {
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 31px;
+    }
+    .description-holiday {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 20px;
+    }
 }
 @media (max-width: 800px) {
     .timer-holiday__units {
@@ -118,5 +133,15 @@ body {
     .timer-holiday {
         width: 90%;
         border-radius: 10px;
+    }
+    .header-holiday {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 19px;
+    }
+    .description-holiday {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 14px;
     }
 }
