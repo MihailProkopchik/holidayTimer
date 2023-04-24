@@ -6,6 +6,8 @@
 
 body {
     background-image: url(./images/independenceday.jpg);
+    width: 100vw;
+    min-width: 100vw;
 }
 .container {
     display: flex;
@@ -86,7 +88,118 @@ body {
     width: 15%;
     align-items: center;
 }
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+}
 
+.modal {
+    width: 45%;
+    height: 70%;
+    border: 1px solid cyan;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #d9d9d9;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.modal__header {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 34px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.modal__content {
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.modal__selectYear {
+    width: 296px;
+    height: 65px;
+    display: block;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+}
+.modal__selectMonth {
+    width: 296px;
+    height: 65px;
+    display: block;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+}
+.modal__selectDay {
+    width: 296px;
+    height: 65px;
+    display: block;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+}
+.modal__buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.modal__option {
+}
+.modal__okBtn,
+.modal__cancelBtn {
+    width: 277px;
+    height: 77px;
+    background: #6ea477;
+    border-radius: 30px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+}
+.hidden {
+    display: none;
+}
 @media (max-width: 1400px) {
     .timer-holiday__values {
         font-weight: 200;

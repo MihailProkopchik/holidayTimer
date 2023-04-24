@@ -69,7 +69,69 @@ let holidaysDB = [
         imgURL: '../images/developerDay.png',
     },
 ];
+function daysInMonth(year, month) {
+    let days = 0;
+    if ((year % 100 === 0 && year % 400 === 0) || (year % 4 === 0 && year % 100 !== 0)) {
+        if (month === 2) {
+            days = 29;
+            return days;
+        }
+    }
+    switch (month) {
+        case 1:
+            days = 31;
+            break;
+        case 2:
+            days = 28;
+            break;
+        case 3:
+            days = 31;
+            break;
+        case 4:
+            days = 30;
+            break;
+        case 5:
+            days = 31;
+            break;
+        case 6:
+            days = 30;
+            break;
+        case 7:
+            days = 31;
+            break;
+        case 8:
+            days = 31;
+            break;
+        case 9:
+            days = 30;
+            break;
+        case 10:
+            days = 31;
+            break;
+        case 11:
+            days = 30;
+            break;
+        case 12:
+            days = 31;
+            break;
+    }
+    return days;
+}
 
+let months = [
+    'Январь',
+    'Февраль',
+    'Март',
+    'Апрель',
+    'Май',
+    'Июнь',
+    'Июль',
+    'Август',
+    'Сентябрь',
+    'октябрь',
+    'Ноябрь',
+    'Декабрь',
+];
 // Объявляем переменные ///////////////////////////////////////
 let body = document.querySelector('body');
 let select = document.querySelector('.choose-holiday__select');
@@ -79,6 +141,13 @@ let daysHtml = document.querySelector('.timer-holiday__days > .timer-holiday__va
 let hoursHtml = document.querySelector('.timer-holiday__hours > .timer-holiday__values');
 let minutesHtml = document.querySelector('.timer-holiday__minutes > .timer-holiday__values');
 let secondsHtml = document.querySelector('.timer-holiday__seconds > .timer-holiday__values');
+let ourDateBtn = document.querySelector('#ourdateBtn');
+let overlay = document.querySelector('.overlay');
+let modal = document.querySelector('.modal');
+let modalYear = document.querySelector('.modal__selectYear');
+let modalMonth = document.querySelector('.modal__selectMonth');
+let modalDay = document.querySelector('.modal__selectDay');
+let modalBtnCancel = document.querySelector('.modal__cancelBtn');
 let timerID;
 ///////////////////////////////////////////////////////////////
 
@@ -96,9 +165,48 @@ select.addEventListener('change', () => {
     clearInterval(timerID);
     timerID = setInterval(renderTimer, 1000, holiday);
 });
+modalBtnCancel.addEventListener('click', () => {
+    overlay.classList.add('hidden');
+    modal.classList.add('hidden');
+});
+
+ourDateBtn.addEventListener('click', () => {
+    overlay.classList.remove('hidden');
+    modal.classList.remove('hidden');
+    let now = new Date();
+    let month = now.getMonth();
+    let date = now.getDate();
+    let year = now.getFullYear();
+    let maxDays = daysInMonth(year, month + 1);
+    modalYear.innerHTML = `<option value="${year}">${year}</option><option value="${year + 1}">${year + 1}</option>`;
+    fillSelectMonths(month);
+    for (let index = date; index <= maxDays; index++) {
+        modalDay.innerHTML += `<option value="${index}">${index}</option>`;
+    }
+    modalMonth.innerHTML;
+});
+modalYear.addEventListener('change', () => {
+    console.dir(`${modalYear.value}`);
+    let now = new Date();
+    let month = now.getMonth();
+    let date = now.getDate();
+    let year = now.getFullYear();
+    if (+modalYear.value === year) {
+        fillSelectMonths(month);
+    } else {
+        fillSelectMonths(0);
+    }
+});
 ///////////////////////////////////////////////////////////////
 
 // Вспомогательные функции //////////////////////////////////////
+let fillSelectMonths = month => {
+    modalMonth.innerHTML = '';
+    for (let index = month; index < 12; index++) {
+        modalMonth.innerHTML += `<option value="${months[index]}">${months[index]}</option>`;
+    }
+};
+
 function fillHolidaysYears(holidaysDB) {
     //console.log('fill');
     // Заполнить в каждом празднике свойство года. Если праздник на текущий момент прошёл то текущий год+1, если ещё не прошёл то просто текущий год.
