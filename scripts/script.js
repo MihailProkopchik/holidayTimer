@@ -227,7 +227,7 @@ modalMonth.addEventListener('change', () => {
     let month = now.getMonth();
     let date = now.getDate();
     let year = now.getFullYear();
-    let maxDays = daysInMonth(year, index);
+    let maxDays = daysInMonth(year, index + 1);
     if (index === month) {
         fillSelectDays(date, maxDays);
     } else {
@@ -237,7 +237,6 @@ modalMonth.addEventListener('change', () => {
 });
 modalDay.addEventListener('change', () => {
     let now = new Date();
-    let month = now.getMonth() + 1;
     holidaysDB[7].day = +modalDay.value;
     console.log(holidaysDB[7].day);
 });
