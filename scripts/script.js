@@ -75,7 +75,7 @@ let holidaysDB = [
         year: 0,
         month: 0,
         day: 0,
-        imgURL: '',
+        imgURL: '../images/svoyadata.jpg',
     },
 ];
 function daysInMonth(year, month) {
@@ -157,6 +157,7 @@ let modalYear = document.querySelector('.modal__selectYear');
 let modalMonth = document.querySelector('.modal__selectMonth');
 let modalDay = document.querySelector('.modal__selectDay');
 let modalBtnCancel = document.querySelector('.modal__cancelBtn');
+let modalBtnOk = document.querySelector('.modal__okBtn');
 let timerID;
 ///////////////////////////////////////////////////////////////
 
@@ -177,6 +178,15 @@ select.addEventListener('change', () => {
 modalBtnCancel.addEventListener('click', () => {
     overlay.classList.add('hidden');
     modal.classList.add('hidden');
+});
+modalBtnOk.addEventListener('click', () => {
+    overlay.classList.add('hidden');
+    modal.classList.add('hidden');
+    body.style.backgroundImage = `url("${holidaysDB[7].imgURL}"`;
+    header.innerText = holidaysDB[7].header;
+    description.innerText = holidaysDB[7].description;
+    clearInterval(timerID);
+    timerID = setInterval(renderTimer, 1000, holidaysDB[7]);
 });
 
 ourDateBtn.addEventListener('click', () => {
