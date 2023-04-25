@@ -68,6 +68,15 @@ let holidaysDB = [
         day: 13,
         imgURL: '../images/developerDay.png',
     },
+    {
+        value: 'ourDay',
+        header: 'Своя дата',
+        description: 'До Вашей даты осталось ',
+        year: 0,
+        month: 0,
+        day: 0,
+        imgURL: '',
+    },
 ];
 function daysInMonth(year, month) {
     let days = 0;
@@ -178,6 +187,9 @@ ourDateBtn.addEventListener('click', () => {
     let date = now.getDate();
     let year = now.getFullYear();
     let maxDays = daysInMonth(year, month + 1);
+    holidaysDB[7].month = month + 1;
+    holidaysDB[7].year = year;
+    holidaysDB[7].day = date;
     modalYear.innerHTML = `<option value="${year}">${year}</option><option value="${year + 1}">${year + 1}</option>`;
     fillSelectMonths(month);
     for (let index = date; index <= maxDays; index++) {
@@ -186,17 +198,40 @@ ourDateBtn.addEventListener('click', () => {
     modalMonth.innerHTML;
 });
 modalYear.addEventListener('change', () => {
-    console.dir(`${modalYear.value}`);
     let now = new Date();
     let month = now.getMonth();
-    let date = now.getDate();
     let year = now.getFullYear();
     if (+modalYear.value === year) {
         fillSelectMonths(month);
     } else {
         fillSelectMonths(0);
+        holidaysDB[7].month = 1;
+        holidaysDB[7].day = 1;
+    }
+    holidaysDB[7].year = +modalYear.value;
+});
+modalMonth.addEventListener('change', () => {
+    let index = months.indexOf(modalMonth.value);
+    holidaysDB[7].month = index + 1;
+    let now = new Date();
+    let month = now.getMonth();
+    let date = now.getDate();
+    let year = now.getFullYear();
+    let maxDays = daysInMonth(year, index);
+    if (index === month) {
+        fillSelectDays(date, maxDays);
+    } else {
+        fillSelectDays(1, maxDays);
+        holidaysDB[7].day = 1;
     }
 });
+modalDay.addEventListener('change', () => {
+    let now = new Date();
+    let month = now.getMonth() + 1;
+    holidaysDB[7].day = +modalDay.value;
+    console.log(holidaysDB[7].day);
+});
+// добавить в прослушиатель смену месяцев,менять чилсло месяца,
 ///////////////////////////////////////////////////////////////
 
 // Вспомогательные функции //////////////////////////////////////
@@ -204,6 +239,12 @@ let fillSelectMonths = month => {
     modalMonth.innerHTML = '';
     for (let index = month; index < 12; index++) {
         modalMonth.innerHTML += `<option value="${months[index]}">${months[index]}</option>`;
+    }
+};
+let fillSelectDays = (date, maxDays) => {
+    modalDay.innerHTML = '';
+    for (let index = date; index <= maxDays; index++) {
+        modalDay.innerHTML += `<option value="${index}">${index}</option>`;
     }
 };
 
