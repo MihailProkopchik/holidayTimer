@@ -158,6 +158,7 @@ let modalMonth = document.querySelector('.modal__selectMonth');
 let modalDay = document.querySelector('.modal__selectDay');
 let modalBtnCancel = document.querySelector('.modal__cancelBtn');
 let modalBtnOk = document.querySelector('.modal__okBtn');
+let inputText = document.querySelector('.modal__input');
 let timerID;
 ///////////////////////////////////////////////////////////////
 
@@ -183,7 +184,7 @@ modalBtnOk.addEventListener('click', () => {
     overlay.classList.add('hidden');
     modal.classList.add('hidden');
     body.style.backgroundImage = `url("${holidaysDB[7].imgURL}"`;
-    header.innerText = holidaysDB[7].header;
+    header.innerText = inputText.value;
     description.innerText = holidaysDB[7].description;
     clearInterval(timerID);
     timerID = setInterval(renderTimer, 1000, holidaysDB[7]);
@@ -197,9 +198,6 @@ ourDateBtn.addEventListener('click', () => {
     let date = now.getDate();
     let year = now.getFullYear();
     let maxDays = daysInMonth(year, month + 1);
-    holidaysDB[7].month = month + 1;
-    holidaysDB[7].year = year;
-    holidaysDB[7].day = date;
     modalYear.innerHTML = `<option value="${year}">${year}</option><option value="${year + 1}">${year + 1}</option>`;
     fillSelectMonths(month);
     for (let index = date; index <= maxDays; index++) {
@@ -211,10 +209,15 @@ modalYear.addEventListener('change', () => {
     let now = new Date();
     let month = now.getMonth();
     let year = now.getFullYear();
+    let date = now.getDate();
+    let index = months.indexOf(modalMonth.value);
+    let maxDays = daysInMonth(year, index + 1);
     if (+modalYear.value === year) {
         fillSelectMonths(month);
+        fillSelectDays(date + 1, maxDays);
     } else {
         fillSelectMonths(0);
+        fillSelectDays(1, maxDays);
         holidaysDB[7].month = 1;
         holidaysDB[7].day = 1;
     }
@@ -228,17 +231,15 @@ modalMonth.addEventListener('change', () => {
     let date = now.getDate();
     let year = now.getFullYear();
     let maxDays = daysInMonth(year, index + 1);
-    if (index === month) {
-        fillSelectDays(date, maxDays);
+    if (index === month && +modalYear.value === year) {
+        fillSelectDays(date + 1, maxDays);
     } else {
         fillSelectDays(1, maxDays);
         holidaysDB[7].day = 1;
     }
 });
 modalDay.addEventListener('change', () => {
-    let now = new Date();
     holidaysDB[7].day = +modalDay.value;
-    console.log(holidaysDB[7].day);
 });
 // добавить в прослушиатель смену месяцев,менять чилсло месяца,
 ///////////////////////////////////////////////////////////////
